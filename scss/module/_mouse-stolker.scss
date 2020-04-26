@@ -3,11 +3,7 @@
 ----------------------------------------------------------------------------- */
 .mouse-stolker__follower,
 .mouse-stolker__cursor {
-    position: fixed;
-    z-index: 999;
-    border-radius: 50%;
-    transition: transform .8s, top .6s, left .6s, width .6s, height .6s;
-    transition-timing-function: ease-out;
+    border-radius: 100%;
     pointer-events: none;
     @include media(sp) {
         display: none;
@@ -15,27 +11,22 @@
 }
 
 .mouse-stolker__follower {
-    top: -12px;
-    left: -12px;
-    width: 32px;
-    height: 32px;
-    border: solid 1px #333;
+    position: absolute;
+    transform: translate(4px, 4px);
+    z-index: 3;
+    width: 40px;
+    height: 40px;
+    background: rgba(51, 51, 51, .1);
+    transition: transform .6s cubic-bezier(.43,.2,.02,1),opacity .4s cubic-bezier(.75, -1.27, .3, 2.33);
     &.is-active {
-        top: -34px;
-        left: -34px;
-        width: 70px;
-        height: 70px;
+        transform: scale(1.6);
     }
 }
 
 .mouse-stolker__cursor {
-    top: 0;
-    left: 0;
+    position: absolute;
+    z-index: 4;
     width: 8px;
     height: 8px;
-    background-color: rgba(51, 51, 51, 0.7);
-    &.is-active {
-        top: -2px;
-        left: -2px;
-    }
+    background: #333;
 }
